@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: darkcyan;
+  margin: 0;
+  font-family: "Mulish", sans-serif !important;
+}

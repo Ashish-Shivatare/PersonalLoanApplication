@@ -1,0 +1,106 @@
+<div class="container" fxLayout="column">
+  <div fxFlex class="form-size">
+    <form novalidate #usForm="ngForm" [formGroup]="userForm">
+      <div fxLayout="column" fxLayoutAlign="space-between center">
+        <h1>Personal Loan Application</h1>
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="city"
+            placeholder="Enter City Name"
+            type="text"
+            required
+          />
+          <mat-error *ngIf="formErrors.city">{{ formErrors.city }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="panNumber"
+            placeholder="Enter Pan Number"
+            pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+            type="text"
+            required
+          />
+          <mat-error *ngIf="formErrors.panNumber">{{
+            formErrors.panNumber
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="fullName"
+            placeholder="Enter Full Name"
+            type="text"
+            required
+          />
+          <mat-error *ngIf="formErrors.fullName">{{
+            formErrors.fullName
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Enter Email Address"
+            type="text"
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+            required
+          />
+          <mat-error *ngIf="formErrors.email">{{ formErrors.email }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="mobile"
+            placeholder="Enter Mobile Number"
+            type="text"
+            pattern="[0-9]*"
+            required
+            (keyup.enter)="callOtp()"
+          />
+          <span matPrefix class="prefix-mobile">+91</span>
+          <mat-error *ngIf="formErrors.mobile">{{
+            formErrors.mobile
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="half-width" [hidden]="otpFieldHidden" [@expand]>
+          <input
+            matInput
+            formControlName="otp"
+            placeholder="Enter Received OTP"
+            pattern="[0-9]*"
+            type="text"
+            (keyup.enter)="verifyOtp()"
+            required
+          />
+          <mat-error *ngIf="formErrors.otp">{{ formErrors.otp }}</mat-error>
+        </mat-form-field>
+        <div>
+          <button
+            mat-button
+            [hidden]="otpLinkHidden"
+            [disabled]="otpLinkDisabled"
+            color="primary"
+            (click)="callOtp()"
+          >
+            Resend OTP
+          </button>
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          [hidden]="!setAlert"
+          [@expand]
+        >
+          Please try again after an hour
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.container {
+  background-color: white;
+  padding: 20px;
+  margin-top: 60px;
+  width: 500px;
+}
+.mat-form-field {
+  padding: 10px;
+}
+
+.prefix-mobile {
+  padding-right: 10px;
+}
