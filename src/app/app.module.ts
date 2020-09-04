@@ -18,6 +18,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
+import { MatExpansionModule } from "@angular/material/expansion";
+
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { GetOtpService } from "./core/services/get-otp.service";
 import { HttpHandlerService } from "./core/services/http-handler.service";
@@ -40,6 +42,7 @@ import { RouterModule } from "@angular/router";
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
+    MatExpansionModule,
     FlexLayoutModule,
     RouterModule.forRoot([
       { path: "verify", component: HomeComponent },

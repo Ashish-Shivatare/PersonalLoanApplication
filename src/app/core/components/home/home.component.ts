@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { User } from "../../models/user";
 import { GetOtpService } from "../../services/get-otp.service";
 import { VerifyOtpService } from "../../services/verify-otp.service";
-import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 
 @Component({
@@ -67,7 +66,6 @@ export class HomeComponent implements OnInit {
     private fb: FormBuilder,
     private getOtpService: GetOtpService,
     private verifyOtpService: VerifyOtpService,
-    private route: ActivatedRoute,
     private router: Router
   ) {
     this.createForm();
@@ -197,16 +195,3 @@ export class HomeComponent implements OnInit {
     }
   }
 }
-
-// resetForm() {
-//   this.userForm.reset({
-//     city: "",
-//     panNumber: "",
-//     fullName: "",
-//     email: "",
-//     mobile: null,
-//     otp: null,
-//   });
-//   this.feedbackFormDirective.resetForm();
-//   this.user = null;
-// }

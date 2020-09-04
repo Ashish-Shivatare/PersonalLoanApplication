@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "../models/user";
-import { getOtpUrl } from "../models/baseURL";
+import { getOtpUrl } from "../models/geturl";
 import { HttpHandlerService } from "./http-handler.service";
 import { catchError } from "rxjs/operators";
 

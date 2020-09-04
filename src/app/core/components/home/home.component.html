@@ -81,25 +81,23 @@
           />
           <mat-error *ngIf="formErrors.otp">{{ formErrors.otp }}</mat-error>
         </mat-form-field>
-        <div>
-          <button
-            mat-button
-            [hidden]="otpLinkHidden"
-            [disabled]="otpLinkDisabled"
-            color="primary"
-            (click)="callOtp()"
-          >
-            Resend OTP
-          </button>
-        </div>
-        <div
-          class="alert alert-danger"
-          role="alert"
-          [hidden]="!setAlert"
-          [@expand]
+        <button
+          mat-button
+          [hidden]="otpLinkHidden"
+          [disabled]="otpLinkDisabled"
+          color="primary"
+          (click)="callOtp()"
         >
-          Please try again after an hour
-        </div>
+          Resend OTP
+        </button>
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        [hidden]="!setAlert"
+        [@expand]
+      >
+        Please try again after an hour
       </div>
     </form>
   </div>
