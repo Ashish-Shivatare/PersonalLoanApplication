@@ -69,7 +69,7 @@
           }}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="half-width" [hidden]="otpFieldHidden" [@expand]>
+        <mat-form-field class="half-width" [hidden]="otpFieldHidden">
           <input
             matInput
             formControlName="otp"
@@ -91,12 +91,7 @@
           Resend OTP
         </button>
       </div>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        [hidden]="!setAlert"
-        [@expand]
-      >
+      <div class="alert alert-danger" role="alert" [hidden]="!setAlert">
         Please try again after an hour
       </div>
     </form>
