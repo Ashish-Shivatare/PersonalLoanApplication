@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
   }
 
   callOtpFunction() {
-    let setTimerMinute = 10 * 1000;
+    let setTimerMinute = 3 * 10 * 1000;
     let setTimerHour = 60 * 60 * 1000;
 
     this.userForm.controls["otp"].enable();
