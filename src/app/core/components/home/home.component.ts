@@ -4,15 +4,14 @@ import { User } from "../../models/user";
 import { GetOtpService } from "../../services/get-otp.service";
 import { VerifyOtpService } from "../../services/verify-otp.service";
 import { Router } from "@angular/router";
-
+import { formError } from "../../models/formErrors";
+import { validationMsg, validatorFields } from "../../models/validations";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-  @ViewChild("fform") feedbackFormDirective;
-
   user: User;
   userForm: FormGroup;
   userFullName: String;
@@ -23,44 +22,9 @@ export class HomeComponent implements OnInit {
   setAlert = false;
   counter = 0;
 
-  formErrors = {
-    city: "",
-    panNumber: "",
-    fullName: "",
-    email: "",
-    mobile: "",
-    otp: "",
-  };
-
-  validationMessages = {
-    city: {
-      required: "City is required.",
-    },
-    panNumber: {
-      required: "Pan number is required.",
-      pattern: "Pan number must be in valid format.",
-      maxlength: "Pan Number cannot be more than 10 characters long.",
-    },
-    fullName: {
-      required: "Full Name is required.",
-      maxlength: "Full Name cannot be more than 140 characters long.",
-    },
-    email: {
-      required: "Email is required.",
-      pattern: "Email must be in valid format.",
-      maxlength: "Email cannot be more than 255 characters long.",
-    },
-    mobile: {
-      required: "Mobile number is required.",
-      pattern: "Mobile number must be in valid format.",
-      maxlength: "Mobile number cannot be more than 10 character long.",
-    },
-    otp: {
-      required: "OTP is required.",
-      pattern: "OTP must be in NUMBER ONLY format",
-      maxlength: "OTP cannot not be more than 4 characters long.",
-    },
-  };
+  formErrors = formError;
+  validationMessages = validationMsg;
+  validatonFields = validatorFields;
 
   constructor(
     private fb: FormBuilder,
@@ -69,37 +33,16 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {
     this.createForm();
-    this.userForm.controls["otp"].disable();
   }
 
   ngOnInit() {}
 
   createForm(): void {
-    this.userForm = this.fb.group({
-      city: ["", [Validators.required]],
-      panNumber: [
-        "",
-        [Validators.required, Validators.pattern, Validators.maxLength(10)],
-      ],
-      fullName: ["", [Validators.required, Validators.maxLength(140)]],
-      email: [
-        "",
-        [Validators.required, Validators.pattern, Validators.maxLength(255)],
-      ],
-      mobile: [
-        "",
-        [Validators.required, Validators.pattern, Validators.maxLength(10)],
-      ],
-      otp: [
-        "",
-        [Validators.required, Validators.pattern, Validators.maxLength(4)],
-      ],
-    });
-
+    this.userForm = this.fb.group(this.validatonFields);
+    this.userForm.controls["otp"].disable();
     this.userForm.valueChanges.subscribe((data) => {
       this.onValueChanged(data);
     });
-    this.onValueChanged();
   }
 
   clearOTPValidators() {

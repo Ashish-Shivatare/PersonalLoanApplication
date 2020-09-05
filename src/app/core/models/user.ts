@@ -5,3 +5,8 @@ export class User {
   email: String;
   mobile: number;
 }
+
+export class Otp {
+  mobile: number;
+  otp: number;
+}

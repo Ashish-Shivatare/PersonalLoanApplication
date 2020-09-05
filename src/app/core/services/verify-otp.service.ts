@@ -3,7 +3,7 @@ import { Otp } from "../models/otp";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
 import { HttpHandlerService } from "./http-handler.service";
-import { verifyOtpUrl } from "../models/verifyurl";
+import { verifyOtpUrl } from "../models/baseURL";
 
 @Injectable({
   providedIn: "root",
